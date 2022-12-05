@@ -4,6 +4,14 @@
 # Example of DNS server to query
 # squid_dns_nameservers: 127.0.0.1
 
+# Cache dir on disk
+squid_cache_dir: []
+#  - path:
+#    max_size:
+#    l1_number:
+#    l2_number:
+#    arg:
+
 # squid auth parameters
 squid_auth_param: []
 # - name: basic

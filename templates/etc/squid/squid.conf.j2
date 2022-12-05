@@ -23,6 +23,13 @@ access_log {{ item['filename'] }} {{ item['format'] |default('squid')}}
 {%   endfor %}
 {% endif %}
 
+{% if squid_cache_dir is defined %}
+# Cache on drive
+{%   for item in squid_cache_dir %}
+cache_dir ufs {{ item['path'] }} {{ item['max_size'] }} {{ item['l1_number'] }} {{ item['l2_number'] }} {{ item['arg'] | default() }}
+{%   endfor %}
+{% endif %}
+
 {% if squid_auth_param is defined %}
 # AUTH_PARAM
 {%   for item in squid_auth_param %}
