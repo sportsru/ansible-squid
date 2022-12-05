@@ -65,7 +65,7 @@ http_access {{ item['action'] }} {{ item['acl']|join(' ') }}
 
 {% if squid_refresh_patterns is defined and squid_refresh_patterns != [] %}
 {%   for item in squid_refresh_patterns %}
-refresh_pattern {{ item['regex'] }} {{ item['min'] }} {{ item['percent'] }} {{ item['max'] }}
+refresh_pattern {{ item['regex'] }} {{ item['min'] }} {{ item['percent'] }} {{ item['max'] }} {{ item['arg'] }}
 {%   endfor %}
 {% endif %}
 
