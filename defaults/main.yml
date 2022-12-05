@@ -24,9 +24,7 @@ squid_acl_common:
 
 squid_acl_custom: []
 
-squid_acl:
-  - '{{ squid_acl_common }}'
-  - '{{ squid_acl_custom }}'
+squid_acl: '{{ squid_acl_common + squid_acl_custom }}'
 
 # Adapt to list your (internal) IP networks from where browsing
 # should be allowed
@@ -109,10 +107,7 @@ squid_http_access_deny:
     acl:
       - all
 
-squid_http_access:
-  - '{{ squid_http_access_common }}'
-  - '{{ squid_http_access_custom }}'
-  - '{{ squid_http_access_deny }}'
+squid_http_access: '{{ squid_http_access_common + squid_http_access_custom + squid_http_access_deny }}'
 
 squid_http_port: 3128
 
@@ -160,10 +155,7 @@ squid_refresh_patterns_all:
     percent: 20%
     max: 4320
 
-squid_refresh_patterns:
-  - '{{ squid_refresh_patterns_common }}'
-  - '{{ squid_refresh_patterns_custom }}'
-  - '{{ squid_refresh_patterns_all }}'
+squid_refresh_patterns: '{{  squid_refresh_patterns_common + squid_refresh_patterns_custom + squid_refresh_patterns_all }}'
 
 # Defines if squid should function in transparent mode
 squid_transparent_proxy: false
