@@ -36,10 +36,10 @@ squid_acl: '{{ squid_acl_common + squid_acl_custom }}'
 
 # Adapt to list your (internal) IP networks from where browsing
 # should be allowed
-squid_acl_localnet:
-  - 10.0.0.0/8
-  - 172.16.0.0/12
-  - 192.168.0.0/16
+squid_acl_localnet: []
+  # - 10.0.0.0/8
+  # - 172.16.0.0/12
+  # - 192.168.0.0/16
 
 squid_acl_safeports:
   - port: 21
@@ -65,8 +65,7 @@ squid_acl_safeports:
 
 # Defines squid peers to sync with
 # #do not enter FQDN...It will be added
-squid_cache_peer:
-  []
+squid_cache_peer: []
   # # do not enter FQDN...hostname only
   # - host: squid-1
   #   #enter domain name for hostname above
@@ -101,12 +100,6 @@ squid_http_access_common:
   - action: deny
     acl:
       - manager
-  - action: allow
-    acl:
-      - localhost
-  - action: allow
-    acl:
-      - localnet
 
 squid_http_access_custom: []
 
