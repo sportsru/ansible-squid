@@ -6,3 +6,12 @@
   become: true
   register: result
   until: result is successful
+
+- name: debian | Create cache directory
+  file:
+    path: "{{ item.path }}"
+    mode: 0700
+    owner: "proxy"
+    group: "proxy"
+    state: directory
+  loop: "{{ squid_cache_dir }}"
