@@ -1,17 +1,17 @@
 ---
 # tasks file for ansible-squid
 
-- include: set_facts.yml
+- import_tasks: set_facts.yml
 
-- include: debian.yml
+- import_tasks: debian.yml
   when: ansible_os_family == "Debian"
 
-- include: redhat.yml
+- import_tasks: redhat.yml
   when: ansible_os_family == "RedHat"
 
-- include: config_squid.yml
+- import_tasks: config_squid.yml
 
-- include: config_squid_transparent_proxy.yml
+- import_tasks: config_squid_transparent_proxy.yml
   when:
     - squid_transparent_proxy
     - squid_transparent_proxy_ferm
