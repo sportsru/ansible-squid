@@ -1,0 +1,20 @@
+---
+- name: htpasswd | Create pass file
+  community.general.htpasswd:
+    path: /etc/squid/htpasswd
+    name: "{{ item.name }}"
+    password: "{{ item.pass }}"
+    owner: root
+    group: root
+    mode: 0644
+  loop: "{{ squid_htpasswd_users }}"
+  when: squid_htpasswd_users
+
+- name: whitelist | Write squid_whitelist to file
+  lineinfile:
+    path: /etc/squid/whitelist
+    line: "{{ item }}"
+    create: yes
+    state: present
+  with_items: "{{ squid_whitelist }}"
+  when: squid_whitelist

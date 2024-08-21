@@ -9,6 +9,8 @@
 - import_tasks: redhat.yml
   when: ansible_os_family == "RedHat"
 
+- import_tasks: acl_custom.yml
+
 - import_tasks: config_squid.yml
 
 - import_tasks: config_squid_transparent_proxy.yml

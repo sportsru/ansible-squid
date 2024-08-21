@@ -29,6 +29,15 @@ access_log {{ item['filename'] }} {{ item['format'] |default('squid')}}
 cache_dir ufs {{ item['path'] }} {{ item['max_size'] }} {{ item['l1_number'] }} {{ item['l2_number'] }} {{ item['arg'] | default() }}
 {%   endfor %}
 {% endif %}
+{% if squid_cache is defined %}
+cache {{ squid_cache }}
+{% endif %}
+{% if squid_cache_mem is defined %}
+cache_mem {{ squid_cache_mem }}
+{% endif %}
+{% if squid_maximum_object_size is defined %}
+maximum_object_size {{ squid_maximum_object_size }}
+{% endif %}
 
 {% if squid_auth_param is defined %}
 # AUTH_PARAM
